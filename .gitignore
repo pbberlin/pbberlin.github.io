@@ -1,0 +1,15 @@
+~*
+*.log
+*.lnk
+*.key
+*.exe
+*.exe~
+tmp/*
+tmp*
+
+
+
+# corel
+Backup_of*.CDR
+*.cpt
+

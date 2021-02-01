@@ -1,3 +1,5 @@
-# pbberlin.github.io
+<img  src="bg.jpg" style="display: block; margin: 0; padding: 0; width: 100%">
 
-Check out my [CSS grid simulator](https://github.com/pbberlin/css-grid-playground)
+# PB Berlin
+
+* Check out my [CSS grid simulator](https://github.com/pbberlin/css-grid-playground)
