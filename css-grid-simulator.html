@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS grid simulator playground</title>
+
+    <script type="text/javascript" src="dyn.js"> </script>
+
+<style type="text/css">
+
+    :root {
+		--nav-height:         6.6rem;  /* headline plus menu */
+        /* default height of body tag is zero */
+        /* subtraction of 1rem to prevent vertical scrollbar */
+		--body-height:        calc(100%  - var(--nav-height) - 1.5rem);
+		--body-height:        calc(100%                      - 1.5rem);
+		--body-height:        calc(100%  - var(--nav-height) / 2  - 0.8rem);
+		--nav-bar-position:   relative;                      /* fixed or relative */
+        --content-top:        0;                             /* fixed navbar => content-top = var(--nav-height); otherwise 0 */
+
+        --clr-pri:            #42332a;
+
+        /* coolors.co/palettes/trending */
+        --clr-body-bg:        #f0efeb;
+
+        --clr-nav-bg:         #cb997e;
+        --clr-nav-mnu:        #fff1e6;
+
+        --clr-content-bg:     #eddcd2;
+        --clr-content-border: #ddbea9;
+
+        --clr-item-bg:        #a5a58d;
+        --clr-item-border:    #b7b7a4;
+
+	}
+
+
+    /* inherited by all descendants */
+    :root, html, body {
+        height:   var(--body-height);
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        background-color: var(--clr-body-bg);
+    }
+
+    * {
+        box-sizing: border-box;
+        margin:  0;
+        padding: 0;
+        border:  0;
+        outline: 0;
+        line-height: 1.15;
+        background-color: transparent;
+    }
+
+    a {
+        color: var(--clr-pri);
+        text-decoration: none;
+    }
+    a:link, a:visited {
+        color: var(--clr-pri);
+    }
+
+    a:hover {
+        box-shadow:
+            0 0 0 0.110em var(--clr-item-bg);
+    }
+
+    :focus {
+        outline: 2px solid var(--clr-item-bg);
+        box-shadow:
+            0 0 0 0.175em var(--clr-item-bg),
+            0 0 0 0.210em var(--clr-item-bg);
+    }
+
+
+
+    label {
+        display: inline-block;
+        min-width:     5.2rem;
+        padding-right: 0.1  rem;
+        text-align: right;
+        font-size: 90%;
+    }
+    label[for=ui122],
+    label[for=ui132],
+    dummy
+    {
+        min-width:     6.6rem;
+    }
+
+    select, input {
+        border: 1px solid gainsboro;
+        font-size: 95%;
+    }
+
+    select {
+        /* all it takes to preven long options from stretching the select */
+        /* min-width:   8.5rem; */
+        /* min-width:   8.5rem; */
+        width:   8.5rem;
+    }
+
+    input[id=uiGTB5],
+    dummy
+    {
+        width: 28rem;
+    }
+
+
+
+    nav {
+
+        all: unset;
+        position:   var(--nav-bar-position);
+        z-index:    103;
+        width:      100%;
+        min-height: var(--nav-height);
+
+        background-color: var(--clr-nav-bg);
+
+        display:               grid;
+        padding:               0.2rem 0;
+
+        grid-auto-flow:        column;
+        grid-auto-flow:        row;
+
+        column-gap:            0.7rem;
+        row-gap:               0.02rem; /* ignored on grid-auto-flow: row*/
+        grid-auto-columns:     minmax(max-content, 31%);  /* width*/
+        grid-template-columns: 1fr minmax(28rem,  3fr) 2fr 2fr;
+        grid-template-rows:    1.4fr 0.8fr 2fr;
+
+        justify-content:       space-between;
+        justify-items:         stretch;
+        align-content:         space-between;
+        align-items:           start;
+        align-items:           stretch;
+
+    }
+
+    nav div {
+        background-color: var(--clr-nav-mnu);
+        margin:     0.20rem 0.3rem;
+        padding:    0.05rem 0.2rem;
+        padding-top:    0.15rem;
+        padding-bottom: 0.01rem;
+        font-size: 70%;
+
+        border-radius: 0.3rem;
+    }
+
+    .grid-container {
+
+        margin:      2rem;
+        margin:      2rem auto;
+
+        width :  calc(100% - 4rem);
+        min-height:  calc(100% - 4rem);
+
+        background-color: var(--clr-content-bg);
+        border: 4px solid var(--clr-content-border);
+
+
+        display: grid;
+
+        grid-auto-flow:        column;
+        grid-auto-rows:        auto;                /* default -    minmax(100px, auto)*/
+        grid-template-rows:    none;                /* default -    repeat(auto-fill, minmax(100px, auto));*/
+
+
+        grid-auto-flow:        row;                 /* default -        */
+        grid-auto-columns:     auto;                /* default -    minmax(1fr, 300px) would be invalid */  
+        grid-template-columns: none;                /* default -    repeat(auto-fill, minmax(300px, auto));*/
+
+        column-gap:        1.0rem;
+        row-gap:           0.8rem; /* ignored on grid-auto-flow: row*/
+
+    }
+
+    .grid-container a {
+        display: inline-block;
+        padding: 0 0.01rem;
+    }
+
+    .item {
+        margin:  0;
+        padding: 0.2em;
+        background-color:  var(--clr-item-bg);
+        outline: 4px solid var(--clr-item-border);
+
+        position: relative;  /* for item menu*/
+    }
+
+    .item .item-menu {
+        position: relative;
+        float: right;
+
+        right:  -0.2rem;
+        top:    -0.2rem;
+
+        background-color: var(--clr-item-border);
+        font-size:   65%;
+        line-height: 60%;
+
+        padding: 0.2rem;
+        border-bottom-left-radius: 0.3rem;
+
+
+    }
+
+    .item .extender {
+        display: inline-block;
+        background-color: var(--clr-item-border);
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 0.3rem;
+
+        min-width: 0.8rem;
+        font-size: 60%;
+    }
+
+    .container-lvl-2 {
+
+        display: flex;
+        /*
+        max-height: 360px;
+        */
+
+        flex-direction: column;
+        flex-direction: row;
+
+        flex-wrap: wrap;
+
+        align-items: baseline;
+        align-items: center;
+    }
+
+    .container-radio {
+
+        display: flex;
+
+        flex-direction: column;
+        flex-direction: row;
+
+        margin: 0.2em;
+
+        justify-content: space-evenly;
+
+        align-items: center;
+
+        min-height: 5em;
+        max-width: 5.2em;
+
+        background-color: rgb(241, 251, 152);
+
+    }
+
+
+    .item-x-special {
+        background-color: rgb(146, 255, 127);
+
+        grid-column: 2 / 4;
+        grid-column-start: 2;
+        grid-column-end: 4;
+
+        grid-row: 2 / 4;
+        grid-row: span 2;
+    }
+
+    @media only screen
+        /* and (min-device-width: 768px) */
+        and (max-device-width: 1024px)
+        and (-webkit-min-device-pixel-ratio: 1) {
+        /* CSS rules here */
+
+        label[for=ui14],
+        label[for=ui15],
+        label[for=ui16],
+        label[for=ui17],
+        dummy {
+            min-width:   4.2rem;
+            max-width:   4.2rem;
+        }
+
+        select {
+            /* min-width:   4.2rem; */
+            /* max-width:   4.2rem; */
+            width:   4.2rem;
+        }
+
+        input[id=uiGTB5],
+        dummy
+        {
+            width: 18rem;
+            letter-spacing: -0.04rem;
+        }
+
+
+
+
+        nav {
+            grid-template-columns: 2.7fr 2.7fr 1.2fr;
+            grid-template-rows:    1.2fr 1.2fr 1.7fr 1.2fr;
+            column-gap:            0.1rem;
+        }
+
+        nav div {
+            margin:     0.120rem 0.13rem;
+        }
+
+        nav div:nth-child(4),
+        dummy
+        {
+            grid-column: 1 / -1;
+        }
+
+        nav div:nth-child(3) {
+            order: 6;
+        }
+
+        .grid-container {
+            margin: 0.7rem auto;
+            width: calc(100% - 1.4rem);
+        }
+
+    }
+
+
+</style>
+</head>
+
+<body onload="onBodyLoad();">
+
+    <nav>
+
+
+        <div style="
+            grid-column:    1 / -1;
+            align-self:     center;
+            justify-self:   stretch;
+            vertical-align: baseline;
+            padding-bottom: 0.2rem;
+        "
+        >
+            <span style='font-size:      240%;'>PBU´s CSS Grid Simulator</span>
+            <!-- <span style="display: inline-block; padding-left: 4rem;" >not suited for mobile; only desktop</span> -->
+        </div>
+
+        <!-- builder -->
+        <div style="
+            grid-column:    1 / -1;
+            align-self:     center;
+            justify-self:   stretch;
+            vertical-align: baseline;
+            padding-bottom: 0.2rem;
+        "        
+        >
+
+            <!-- grid template builder -->
+            <label for="uiGTB1" style="min-width: 1.8rem;"><b>Grid-Tpl-Builder</b>  </label>
+            
+            <select id="uiGTB1" name="" style="width: 4.4rem;" title="repeat">
+                <option value="">no repeat</option>
+                <option value="repeat( auto-fill, ">repeat( auto-fill, </option>
+                <option value="repeat( auto-fit , ">repeat( auto-fit , </option>
+                <option value="repeat(        2 , ">repeat( 2 ,        </option>
+                <option value="repeat(        3 , ">repeat( 3 ,        </option>
+                <option value="repeat(        4 , ">repeat( 4 ,        </option>
+            </select>
+            <label for="uiGTB2" style="min-width: 1.2rem;">min</label>
+            <select id="uiGTB2" name="" style="width: 3.2rem;" title="min argument">
+                <option value="200px" >200px </option>
+                <option value="auto" title="As max arg: max-content. As a min arg: largest min-[width|height] in track">auto</option>
+                <option value="min-content" title="stackoverflow.com/questions/51285308">min-content</option>
+                <option value="max-content" title="stackoverflow.com/questions/51285308">max-content</option>
+                <option value="fit-content(40%)" title="minmax(auto, max-content) clamped at 40%">fit-content(40%)</option>
+                <option value=" 50px" > 50px </option>
+                <option value="100px" >100px </option>
+                <option value="200px" >200px </option>
+                <option value="300px" >300px </option>
+                <option value="0.25fr">0.25fr</option>
+                <option value="0.5fr ">0.50fr</option>
+                <option value="0.75fr">0.75fr</option>
+                <option value="1fr"   >1.00fr</option>
+                <option value="1.5fr" >1.50fr</option>
+                <option value="2fr"   >2.00fr</option>
+                <option value="3fr"   >3.00fr</option>
+            </select>
+            <label for="uiGTB3" style="min-width: 1.2rem;">max</label>
+            <select id="uiGTB3" name="" style="width: 3.2rem;" title="max argument">
+                <option value="1fr"   >1.00fr</option>
+                <option value="auto" title="As max arg: max-content. As a min arg: largest min-[width|height] in track">auto</option>
+                <option value="min-content" title="stackoverflow.com/questions/51285308">min-content</option>
+                <option value="max-content" title="stackoverflow.com/questions/51285308">max-content</option>
+                <option value="fit-content(40%)" title="minmax(auto, max-content) clamped at 40%">fit-content(40%)</option>
+                <option value=" 50px" > 50px </option>
+                <option value="100px" >100px </option>
+                <option value="200px" >200px </option>
+                <option value="300px" >300px </option>
+                <option value="0.25fr">0.25fr</option>
+                <option value="0.5fr ">0.50fr</option>
+                <option value="0.75fr">0.75fr</option>
+                <option value="1fr"   >1.00fr</option>
+                <option value="1.5fr" >1.50fr</option>
+                <option value="2fr"   >2.00fr</option>
+                <option value="3fr"   >3.00fr</option>
+            </select>
+
+
+            <a id="uiGTB4" href="" onclick="addGridTemplateBuilderArg(this,'xx'); return false;" 
+                title="add argument"
+                style="font-size: 110%;"
+            > 
+                &nbsp; &#10133; &nbsp;
+            </a>
+            
+            <!-- no wider than 22rem for mobile -->
+            <input  id="uiGTB5" name="" value=""  maxlength="200" 
+                style="resize: both; overflow: auto;"
+            >
+
+            <a id="uiGTB4" href="" onclick="createCSSClass(document.getElementById('uiGTB5'),'grid-template-columns'); return false;"
+                title="-> grid column template"            
+            >
+                &nbsp; <b>C</b> &nbsp;
+            </a>
+
+            <a id="uiGTB5" href="" onclick="createCSSClass(document.getElementById('uiGTB5'),'grid-template-rows')   ; return false;"
+                title="-> row column template"            
+            >
+                &nbsp; <b>R</b> &nbsp;
+            </a>
+
+            <a id="uiGTB6" href="" onclick="document.getElementById('uiGTB5').value=''; return false;">
+                &nbsp; <b>x</b> &nbsp;
+            </a>
+            <br>
+
+        </div>
+
+
+        <div>
+        
+            <label for="ui01a" style="min-width: 0;"></label>
+            + <a id="ui01a" href="" onclick="addItem(11);return false;" tabindex="0">11 items</a>
+            <br>
+        
+            <label for="ui01b" style="min-width: 0;"></label>
+            + &nbsp; <a id="ui01b" href="" onclick="addItem();return false;" tabindex="0">1 item</a>
+            <br>
+        
+        </div>
+
+
+        <div>
+
+            <!-- direction -->
+            <label for="ui11">grid-auto-flow</label>
+            <select id="ui11" name="" onchange="createCSSClass(this,'grid-auto-flow')">
+                <option value="row"         >row</option>
+                <option value="column"      >column</option>
+                <option value="dense"       >dense</option>
+                <option value="dense row"   >dense row</option>
+                <option value="dense column">dense column</option>
+            </select>
+            <br>
+
+
+            <!-- col -->
+            <label for="ui121">grid-auto-columns</label>
+            <select id="ui121" name=""   onchange="createCSSClass(this,'grid-auto-columns')"
+                title="if no column template is specified"
+            >
+                <option value="auto">auto</option>
+                <!-- invalid <option value="minmax(1fr, 300px)"             >minmax(1fr, 300px)</option> -->
+                <!-- invalid <option value="minmax(max-content, content)"   >minmax(max-content, content)</option> -->
+                <!-- invalid <option value="minmax(min-content, content)"   >minmax(min-content, content)</option> -->
+                <option value="minmax(auto, 300px)"          >minmax(auto,        300px)</option>
+                <option value="minmax(min-content, 300px)"   >minmax(min-content, 300px)</option>
+                <option value="minmax(300px, 1fr)"           >minmax(300px,        1fr ) -overflow </option>
+                <option value="minmax(300px, auto)"          >minmax(300px,        auto) -overflow </option>
+                <option value="minmax(max-content, 300px)"   >minmax(max-content, 300px) -overflow</option>
+
+            </select>
+
+            <label for="ui122">grid-template-columns</label>
+            <select id="ui122" name=""   onchange="createCSSClass(this,'grid-template-columns')"
+                title="pre-configured values for column template"
+            >
+                <option value="none" >none (defaults to auto-cols)</option>
+                <option value="repeat(auto-fill, minmax(300px, auto))"  >repeat(auto-fill, minmax(300px, auto))</option>
+                <option value="200px 1fr 2fr min-content"               >200px 1fr 2fr min-content</option>
+                <option value="1fr 1fr"               >1fr 1fr</option>
+                <option value="1fr 1fr 1fr"           >1fr 1fr 1fr</option>
+                <option value="1fr 1fr 1fr 1fr"       >1fr 1fr 1fr 1fr</option>
+                <option value="1fr 1fr 1fr 1fr 1fr"   >1fr 1fr 1fr 1fr 1fr</option>
+            </select>
+            <br>
+
+
+            <!-- row -->
+            <label for="ui131">grid-auto-rows</label>
+            <select id="ui131" name="" onchange="createCSSClass(this,'grid-auto-rows')"
+                title="if no row template is specified"
+            >
+                <option value="auto">auto</option>
+                <option value="minmax(100px, auto)">minmax(100px, auto)</option>
+                <option value="minmax(auto, 360px)">minmax(auto, 360px)</option>
+            </select>
+
+
+            <label for="ui132">grid-template-rows</label>
+            <select id="ui132" name=""   onchange="createCSSClass(this,'grid-template-rows')"
+                title="pre-configured values for row template"
+            >
+                <option value="none" >none (defauts to auto-rows)</option>
+                <option value="repeat(auto-fill, minmax(100px, auto))"  >repeat(auto-fill, minmax(100px, auto))</option>
+                <option value="repeat(auto-fill, minmax(100px, 1f  ))"  >repeat(auto-fill, minmax(100px, 1fr ))</option>
+                <option value="1fr 1fr"               >1fr 1fr</option>
+                <option value="1fr 1fr 1fr"           >1fr 1fr 1fr</option>
+                <option value="1fr 1fr 1fr 1fr"       >1fr 1fr 1fr 1fr</option>
+                <option value="1fr 1fr 1fr 1fr 1fr"   >1fr 1fr 1fr 1fr 1fr</option>
+                <option value="1.5fr 0.5fr 1.5fr 0.5fr 1fr"   >1.5fr 0.5fr 1.5fr 0.5fr 1fr</option>
+            </select>
+            <br>
+
+        </div>
+
+        <div>
+
+
+            <label for="ui14" title="no baseline">justify-content</label>
+            <select id="ui14" name=""  onchange="createCSSClass(this,'justify-content')">
+                <option value="stretch">stretch</option>
+                <option value="center">center</option>
+                <option value="start ">start</option>
+                <option value="end">end</option>
+                <option value="left">left</option>
+                <option value="right">right</option>
+                <option value="space-between">space-between</option>
+                <option value="space-around" >space-around</option>
+                <option value="space-evenly" >space-evenly</option>
+            </select>
+            <br>
+
+            <label for="ui15">justify-items</label>
+            <select id="ui15" name=""  onchange="createCSSClass(this,'justify-items')">
+                <option value="stretch"     >stretch</option>
+                <option value="center"      >center</option>
+                <option value="start "      >start</option>
+                <option value="end"         >end</option>
+                <option value="left"        >left</option>
+                <option value="right"       >right</option>
+            </select>
+            <br>
+
+        </div>
+
+        <div>
+
+            <label for="ui16" title="HAS baseline">align-content</label>
+            <select id="ui16" name="" onchange="createCSSClass(this,'align-content')">
+                <option value="stretch">stretch</option>
+                <option value="center">center</option>
+                <option value="start ">start</option>
+                <option value="baseline ">baseline - only cross axis</option>
+                <option value="end">end</option>
+                <option value="left">left</option>
+                <option value="right">right</option>
+                <option value="space-between">space-between</option>
+                <option value="space-around">space-around</option>
+                <option value="space-evenly">space-evenly</option>
+            </select>
+            <br>
+
+            <label for="ui17" title="HAS baseline">align-items</label>
+            <select id="ui17" name="" onchange="createCSSClass(this,'align-items')">
+                <option value="stretch">stretch</option>
+                <option value="center">center</option>
+                <option value="start ">start</option>
+                <option value="baseline ">baseline - only cross axis</option>
+                <option value="end">end</option>
+                <option value="left">left</option>
+                <option value="right">right</option>
+            </select>
+            <br>
+
+        </div>
+
+    </nav>
+
+    <div class="grid-container">
+    </div>
+
+</body>
+</html>
