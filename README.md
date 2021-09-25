@@ -1,6 +1,6 @@
 <!-- headline will be auto-inserted  -->
 
-<img  src="bg.jpg" style="display: block; margin: 0; padding: 0; width: 100%">
+<img  src="bg-02.jpg" style="display: block; margin: 0; padding: 0; width: 100%">
 
 ## 2021
 
@@ -8,12 +8,13 @@
 
 * People want changes to their email forms
 
-* This work is onerous and error-prone
+* Tedious and error-prone
 
 * Solution:  
 [Golang structure into HTML form](https://github.com/pbberlin/struc2frm)
   * Input groups
   * Dropdowns
+  * Multiselection by wildcards
   * File uploads
   * CSRF defense
   * Request parsing
