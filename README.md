@@ -2,16 +2,15 @@
 
 <img  src="bg-02.jpg" style="display: block; margin: 0; padding: 0; width: 100%">
 
-## 2021
+[2020 projects](2020.md)
+
+## 2021 projects
 
 ### Package `struc2frm`
 
-* People want changes to their email forms
+* Changing email forms is tedious and error-prone
 
-* Tedious and error-prone
-
-* Solution:  
-[Golang structure into HTML form](https://github.com/pbberlin/struc2frm)
+* Solution: [Golang structure into HTML form](https://github.com/pbberlin/struc2frm)
   * Input groups
   * Dropdowns
   * Multiselection by wildcards
@@ -21,21 +20,18 @@
   * HTML rendering
   * CSV rendering
 
-All derived from a single data structure
-
-### CSS grid inspiration
+### CSS grid simulator
 
 * `CSS grid` gives slimmer and more flexible HTML  
 for our [questionnaire software](https://github.com/zew/go-questionnaire)
 
-* For getting familiar with the concepts of `CSS grid`  
-I created a `test case`
+* I was inpired by  
+[Michal's simulator](https://michalgrochowski.github.io/grid-playground/dist/)
 
-* Check out my resulting [CSS grid simulator](css-grid-simulator.html)
+* My resulting [CSS grid simulator](css-grid-simulator.html)  
+is uglier but has more [features](https://dilbert.com/strip/2001-02-05)
 
-* For comparison: [Michal's simulator](https://michalgrochowski.github.io/grid-playground/dist/)
-
-### `SVN` to `GIT` migration
+### From `svn` to `git` server
 
 * In March 2021, I concluded the migration from svn to git in our institute
 
@@ -48,7 +44,7 @@ Thanks to Andreas for setting up the AD access rights.
 after the underlying `Pearl` script  
 was allocated 16 GB of RAM to store the helper structures.
 
-### Case study: Pure Javascript validation
+### Pure Javascript validation
 
 * Our [questionnaire software](https://github.com/zew/go-questionnaire)
 needs instant feedback for user input
@@ -69,7 +65,7 @@ needs instant feedback for user input
 use `caption (auto-generated)` and then `auto translate ... English`  
 to view English subtitling
 
-### `go-questionnaire` version 2.0
+### Version 2.0 of `go-questionnaire`
 
 * [go-questionnaire](https://github.com/zew/go-questionnaire/releases/tag/v2.0.0)  based on CSS grid is released
 
@@ -81,7 +77,5 @@ to view English subtitling
 four `paternalism` research questionnaires.  
 Unpublished; based on [this paper](https://kups.ub.uni-koeln.de/46303/1/%5B2021%5D%20Ambuehl%20Bernheim%20Ockenfels_What%20Motivates%20Paternalism_AER_final%20WP.pdf);  
 also using `go-questionnaire 2.0`.
-
-* `go-questionnaire 2.0` based on CSS grid is considered stable
 
 <!-- * Check out my [CSS grid simulator](https://github.com/pbberlin/css-grid-playground) -->
