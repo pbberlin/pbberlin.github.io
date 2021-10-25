@@ -2,9 +2,12 @@
 
 <img  src="bg-02.jpg" style="display: block; margin: 0; padding: 0; width: 100%">
 
-[2020 projects](2020.md)
+<!-- https://www.w3schools.com/charsets/ref_utf_geometric.asp -->
+<!-- &#9635; -->
 
-## 2021 projects
+&nbsp;  
+[...2019](lte2019.md) &nbsp;  &#9679; &nbsp;  [2020](2020.md)  
+## 2021
 
 ### Package `struc2frm`
 
