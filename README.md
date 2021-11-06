@@ -1,15 +1,78 @@
 <!-- headline will be auto-inserted  -->
 
-<img  src="bg-02.jpg" style="display: block; margin: 0; padding: 0; width: 100%">
+Peter Buchmann, application developer at [ZEW Institute](https://www.zew.de/en/team/pbu)
 
+<!-- <img  src="bg-03.jpg" style="display: block; margin: 0; padding: 0; width: 100%">
+ -->
+<img  src="iche.jpg" 
+  style="display: block; 
+    margin: 0; padding: 0; 
+    width: 20%; min-width: 160px; max-width: 320px; 
+    float: left; margin-right: 2rem;
+    ">
 <!-- https://www.w3schools.com/charsets/ref_utf_geometric.asp -->
 <!-- &#9635; -->
 
+<br>
+
 &nbsp;  
 [...2019](lte2019.md) &nbsp;  &#9679; &nbsp;  [2020](2020.md)  
-## 2021
 
-### Package `struc2frm`
+## Projects 2021
+
+<div style='clear: both; height: 0px;'></div>
+
+### <span style='font-size:75%'>January</span><br>CSS grid simulator
+
+* `CSS grid` enables lean and flexible HTML layouts
+
+* Inspired by [Michal's simulator](https://michalgrochowski.github.io/grid-playground/dist/)
+
+* My resulting [CSS grid simulator](css-grid-simulator.html)  
+is uglier but has more [features](https://dilbert.com/strip/2001-02-05)
+
+### <span style='font-size:75%'>March</span><br>From `SVN` to `GIT`
+
+* Setting up a [gitserver](https://git.zew.de/) for the [ZEW institute](https://www.zew.de/).  
+
+* Using open source [gitea](https://gitea.io/en-us/) - similar to github.com
+
+* LDAP login removes most of the tedious administration.  
+Thanks to Andreas for setting up the AD access rights.
+
+* Converting svn repositories up to 20 GB succeeded,  
+after the underlying `Pearl` script  
+was allocated 16 GB of RAM to store the helper structures.
+
+### <span style='font-size:75%'>April</span><br>Release of [go-questionnaire 2.0](https://github.com/zew/go-questionnaire/releases/tag/v2.0.0)
+
+* Migration to `CSS grid` layout
+
+* May:  
+[ZEW index](https://de.wikipedia.org/wiki/ZEW-Index) migrated to [go-questionnaire 2.0](https://github.com/zew/go-questionnaire)
+
+* September:  
+The [paternalism project](https://kups.ub.uni-koeln.de/46303/1/%5B2021%5D%20Ambuehl%20Bernheim%20Ockenfels_What%20Motivates%20Paternalism_AER_final%20WP.pdf) is using [go-questionnaire 2.0](https://github.com/zew/go-questionnaire)
+
+<!-- * Check out my [CSS grid simulator](https://github.com/pbberlin/css-grid-playground) -->
+
+### <span style='font-size:75%'>May</span><br>Pure Javascript validation
+
+* Our [questionnaire software](https://github.com/zew/go-questionnaire)
+needs instant feedback for user input
+
+* Feedback is dependent on multiple other input fields
+
+* Error messages must come in multiple languages
+
+* [Case study](https://survey2.zew.de/doc/html5-form-validation/playground-03.html) using pure Javascript
+  * [Presentation on youtube - in German](https://youtu.be/BaV0ebrcepY)  
+use `caption (auto-generated)` and then `auto translate ... English`  
+to view English subtitling
+  * [Playground](https://survey2.zew.de/doc/html5-form-validation/playground-03.html)
+  * [Docs](https://survey2.zew.de/doc/html5-form-validation/validation.md)
+
+### <span style='font-size:75%'>October</span><br>Software library `struc2frm`
 
 * Changing email forms is tedious and error-prone
 
@@ -23,62 +86,3 @@
   * HTML rendering
   * CSV rendering
 
-### CSS grid simulator
-
-* `CSS grid` gives slimmer and more flexible HTML  
-for our [questionnaire software](https://github.com/zew/go-questionnaire)
-
-* I was inpired by  
-[Michal's simulator](https://michalgrochowski.github.io/grid-playground/dist/)
-
-* My resulting [CSS grid simulator](css-grid-simulator.html)  
-is uglier but has more [features](https://dilbert.com/strip/2001-02-05)
-
-### From `svn` to `git` server
-
-* In March 2021, I concluded the migration from svn to git in our institute
-
-* Our [gitea](https://gitea.io/en-us/) server works roughly similar to github.com
-
-* LDAP login removes most of the tedious administration.  
-Thanks to Andreas for setting up the AD access rights.
-
-* Converting 20 GB svn repositories to git was successful,  
-after the underlying `Pearl` script  
-was allocated 16 GB of RAM to store the helper structures.
-
-### Pure Javascript validation
-
-* Our [questionnaire software](https://github.com/zew/go-questionnaire)
-needs instant feedback for user input
-
-* Feedback is dependent on multiple other input fields
-
-* Error messages must come in multiple languages
-
-* Do you know a JS libary or existing solution?
-
-* I created a `case study` solution using pure JS
-
-* [Docs](https://survey2.zew.de/doc/html5-form-validation/validation.md)
-
-* [Playground](https://survey2.zew.de/doc/html5-form-validation/playground-03.html)
-
-* [Presentation on youtube - in German](https://youtu.be/BaV0ebrcepY)  
-use `caption (auto-generated)` and then `auto translate ... English`  
-to view English subtitling
-
-### Version 2.0 of `go-questionnaire`
-
-* [go-questionnaire](https://github.com/zew/go-questionnaire/releases/tag/v2.0.0)  based on CSS grid is released
-
-* Work began in February 2021
-
-* Since May 2021 [ZEW index](https://de.wikipedia.org/wiki/ZEW-Index) is using go-questionnaire 2.0
-
-* September 2021 saw the successful conclusion of the  
-four `paternalism` research questionnaires.  
-Unpublished; based on [this paper](https://kups.ub.uni-koeln.de/46303/1/%5B2021%5D%20Ambuehl%20Bernheim%20Ockenfels_What%20Motivates%20Paternalism_AER_final%20WP.pdf);  
-also using `go-questionnaire 2.0`.
-
-<!-- * Check out my [CSS grid simulator](https://github.com/pbberlin/css-grid-playground) -->
