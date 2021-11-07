@@ -18,7 +18,7 @@ Peter Buchmann, application developer at [ZEW Institute](https://www.zew.de/en/t
 &nbsp;  
 [...2019](lte2019.md) &nbsp;  &#9679; &nbsp;  [2020](2020.md)  
 
-## Projects 2021
+## Projects&nbsp;2021
 
 <div style='clear: both; height: 0px;'></div>
 
@@ -28,12 +28,12 @@ Peter Buchmann, application developer at [ZEW Institute](https://www.zew.de/en/t
 
 * Inspired by [Michal's simulator](https://michalgrochowski.github.io/grid-playground/dist/)
 
-* My resulting [CSS grid simulator](css-grid-simulator.html)  
+* My resulting [CSS grid simulator](./css-grid-simulator/index.html)  
 is uglier but has more [features](https://dilbert.com/strip/2001-02-05)
 
 ### <span style='font-size:75%'>March</span><br>From `SVN` to `GIT`
 
-* Setting up a [gitserver](https://git.zew.de/) for the [ZEW institute](https://www.zew.de/).  
+* Setting up a [gitserver](https://git.zew.de/) for the [ZEW institute](https://www.zew.de/)
 
 * Using open source [gitea](https://gitea.io/en-us/) - similar to github.com
 
@@ -61,9 +61,9 @@ The [paternalism project](https://kups.ub.uni-koeln.de/46303/1/%5B2021%5D%20Ambu
 * Our [questionnaire software](https://github.com/zew/go-questionnaire)
 needs instant feedback for user input
 
-* Feedback is dependent on multiple other input fields
+* Dependent on multiple other input fields
 
-* Error messages must come in multiple languages
+* Error messages in multiple languages
 
 * [Case study](https://survey2.zew.de/doc/html5-form-validation/playground-03.html) using pure Javascript
   * [Presentation on youtube - in German](https://youtu.be/BaV0ebrcepY)  
@@ -77,12 +77,13 @@ to view English subtitling
 * Changing email forms is tedious and error-prone
 
 * Solution: [Golang structure into HTML form](https://github.com/pbberlin/struc2frm)
+  * HTML input form and card view
   * Input groups
   * Dropdowns
   * Multiselection by wildcards
-  * File uploads
   * CSRF defense
   * Request parsing
-  * HTML rendering
+  * File uploads
   * CSV rendering
+  * Default CSS
 
