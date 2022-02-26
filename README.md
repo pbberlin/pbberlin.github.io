@@ -40,9 +40,8 @@ is uglier but has more [features](https://dilbert.com/strip/2001-02-05)
 * LDAP login removes most of the tedious administration.  
 Thanks to Andreas for setting up the AD access rights.
 
-* Converting svn repositories up to 20 GB succeeded,  
-after the underlying `Pearl` script  
-was allocated 16 GB of RAM to store the helper structures.
+* Conversion of 20&nbsp;GB SVN repository  
+  required _16&nbsp;GB_ of RAM for `Pearl` helper structures.
 
 ### <span style='font-size:75%'>April</span><br>Release of [go-questionnaire 2.0](https://github.com/zew/go-questionnaire/releases/tag/v2.0.0)
 
@@ -74,16 +73,13 @@ to view English subtitling
 
 ### <span style='font-size:75%'>October</span><br>Software library `struc2frm`
 
-* Changing email forms is tedious and error-prone
+Changing email forms is tedious and error-prone.  
+Solution: [Golang structure into HTML form](https://github.com/pbberlin/struc2frm)
 
-* Solution: [Golang structure into HTML form](https://github.com/pbberlin/struc2frm)
-  * HTML input form and card view
-  * Input groups
-  * Dropdowns
-  * Multiselection by wildcards
-  * CSRF defense
-  * Request parsing
-  * File uploads
-  * CSV rendering
-  * Default CSS
-
+* All usual input types
+* File uploads, dropdowns
+  * Multiselection by wildcard
+* Form view, card view, default CSS
+  * Input groups, separators
+* Defaults, request parsing, CSRF defense
+* CSV storage
