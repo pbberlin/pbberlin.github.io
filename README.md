@@ -26,11 +26,9 @@ Peter Buchmann, application developer at [ZEW Institute](https://www.zew.de/en/t
 <br>
 <br>
 
-![](https://raw.githubusercontent.com/pbberlin/github-stats/master/generated/overview.svg#gh-dark-mode-only)
 
 ![](https://raw.githubusercontent.com/pbberlin/github-stats/master/generated/overview.svg#gh-light-mode-only)
 
 
-![](https://raw.githubusercontent.com/pbberlin/github-stats/master/generated/languages.svg#gh-dark-mode-only)
 
 ![](https://raw.githubusercontent.com/pbberlin/github-stats/master/generated/languages.svg#gh-light-mode-only)
