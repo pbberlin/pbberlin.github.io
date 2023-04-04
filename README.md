@@ -2,8 +2,9 @@
 
 Peter Buchmann, application developer at [ZEW Institute](https://www.zew.de/en/team/pbu)
 
-[github ZEW](https://github.com/zew)
-[github personal](https://github.com/pbberlin)
+* [github ZEW](https://github.com/zew)
+
+* [github personal](https://github.com/pbberlin)
 
 <!-- <img  src="bg-03.jpg" style="display: block; margin: 0; padding: 0; width: 100%">
  -->
